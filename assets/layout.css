@@ -1,0 +1,534 @@
+/* ============================================================================================
+   GLOBAL RESET + BASE
+============================================================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    scroll-behavior: smooth;
+    font-family: "Inter", sans-serif;
+}
+
+body.dark-mode {
+    background: #0B0E14;
+    color: #ffffff;
+}
+
+body.light-mode {
+    background: #F6F7FB;
+    color: #0B0E14;
+}
+
+
+/* ============================================================================================
+   HEADER
+============================================================================================ */
+
+.site-header {
+    width: 100%;
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(12px);
+}
+
+.site-header a {
+	color: white;
+	text-decoration: none;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.desktop-nav {
+    display: flex;
+    gap: 28px;
+}
+
+.desktop-nav .nav-link {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1rem;
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
+}
+
+.desktop-nav .nav-link:hover {
+    opacity: 1;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    margin-left: 24px;
+    cursor: pointer;
+    background: radial-gradient(circle at 30% 30%, #E553FF, #6A5CFF);
+    box-shadow: 0 0 12px rgba(229, 83, 255, 0.6);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 24px;
+    height: 3px;
+    background: currentcolor;
+    border-radius: 2px;
+}
+
+/* MOBILE MENU */
+
+.mobile-menu {
+    position: fixed;
+    top: var(--header-height, 55px);
+    right: 0;
+    left: 0;
+
+    background: #333; /* lighter gray for dark mode */
+    z-index: 9999;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 20px 8px;
+    gap: 8px;
+
+    max-height: calc(100vh - var(--header-height, 60px));
+    overflow-y: auto; /* menu scrolls if needed, page behind never scrolls */
+}
+
+
+.mobile-menu.hidden {
+    display: none;
+}
+
+.mobile-menu a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+
+    padding: 4px 10px;     /* smaller vertical + very small horizontal */
+    display: block;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+
+.mobile-menu a:last-child {
+    border-bottom: none;
+}
+.mobile-menu {
+    opacity: 1;
+    transition: opacity 0.25s ease;
+}
+
+.mobile-menu.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+
+/* ============================================================================================
+   HERO SECTION
+============================================================================================ */
+
+.hero {
+    width: 100%;
+    padding: 140px 20px 160px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* HERO SWIRL 1 — large top-right */
+.hero::before {
+    content: "";
+    position: absolute;
+
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+
+    /* CORRECT POSITION — center is just above hero section */
+    top: 50px;
+    left: -30px;
+	
+	 background: radial-gradient(
+        circle at 85% 20%,         /* hotspot near upper-right */
+        #f62681 0%,                /* bright magenta */
+        #4b0082 35%,		/* deep purple */
+		#240952 45%,
+        rgba(0,0,0,0) 60%          /* transparent fade */
+    );
+
+    /* Soft edge only */
+    filter: blur(1px);
+
+    /* sharp linear gradient 
+    background: linear-gradient(
+        220deg,
+        #f62681 0%,
+        #4b0082 40%,
+        #330066 58%,
+        transparent 70%
+    );*/
+
+    
+    z-index: -1;
+}
+
+
+
+
+
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 540px;
+    height: 540px;
+    top: 100px;
+    right: -60px;
+
+    border-radius: 50%;
+	
+	 background: radial-gradient(
+        circle at 15% 7%,         /* hotspot near upper-right */
+        #f62681 0%,                /* bright magenta */
+        #4b0082 35%,		/* deep purple */
+		#240952 45%,
+        rgba(0,0,0,0) 60%          /* transparent fade */
+    );
+
+    /* Soft edge only */
+    filter: blur(1px);
+
+    /*background: linear-gradient(
+        145deg,
+        rgba(0,0,0,0.9) 0%,
+        #1b0f3a 20%,
+        #291bff 55%,
+        #3c24ff 72%,
+        #ff2ebf 97%
+    );
+
+    filter: blur(1px);*/
+    opacity: 0.90;
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+
+
+/* HERO SWIRL 2 — smaller mid-left */
+
+
+
+.hero-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    max-width: 900px;
+    margin: 0 auto 18px;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    max-width: 850px;
+    opacity: 0.9;
+    margin: 0 auto 32px;
+}
+
+/* CTA BUTTON */
+.cta-button {
+    display: inline-block;
+    padding: 14px 36px;
+    border-radius: 40px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+	background: #483add;
+    /*background: linear-gradient(90deg,
+        #8b008b,
+        #6A5CFF,
+        #4b0082
+    );*/
+    box-shadow: 0 0 10px rgba(229,83,255,0.3);
+    transition: transform 0.15s ease;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+}
+
+
+/* ============================================================================================
+   SECTION TITLES
+============================================================================================ */
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+
+/* ============================================================================================
+   WHAT WE OFFER — 3 COLUMN GRID
+============================================================================================ */
+
+.offer-section {
+    padding: 120px 20px;
+}
+
+.offer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.offer-card {
+    padding: 32px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.1);
+    text-align: left;
+}
+
+body.light-mode .offer-card {
+    background: rgba(0,0,0,0.05);
+}
+
+.icon-box {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+}
+
+.icon-book {
+    background: #483add;
+
+}
+
+.icon-chat {
+    background: #483add;
+
+}
+
+.icon-briefcase {
+    /*background: linear-gradient(135deg, #6A5CFF, #483add);*/
+	background: #483add;
+}
+
+.offer-title {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+
+/* ============================================================================================
+   WHO WE SERVE
+============================================================================================ */
+
+.serve-section {
+    padding: 120px 20px;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+
+.serve-list li {
+    margin: 10px 0;
+}
+
+.serve-footer {
+    margin-top: 22px;
+    opacity: 0.9;
+}
+.serve-list {
+    list-style: none;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    text-align: left;           /* overrides parent center alignment */
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 500px;           /* optional but keeps it neat */
+}
+
+
+/* ============================================================================================
+   HOW IT WORKS — STEP CARDS
+============================================================================================ */
+
+.how-section {
+    padding: 120px 20px;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.step-card {
+    padding: 28px;
+    border-radius: 20px;
+    background: rgba(255,255,255,.1);
+    /*backdrop-filter: blur(10px);*/
+    text-align: left;
+}
+
+body.light-mode .step-card {
+    background: rgba(0,0,0,0.05);
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #240952, #f62681);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+
+/* ============================================================================================
+   MISSION SECTION — WITH SWIRL
+============================================================================================ */
+
+.mission {
+    padding: 140px 20px;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Mission swirl */
+.mission::before {
+    content: "";
+    position: absolute;
+
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+
+    /* CORRECT POSITION — center is just above hero section */
+    top: 50px;
+    left: -30px;
+	
+	 background: radial-gradient(
+        circle at 85% 20%,         /* hotspot near upper-right */
+        #f62681 0%,                /* bright magenta */
+        #4b0082 35%,		/* deep purple */
+		#240952 45%,
+        rgba(0,0,0,0) 60%          /* transparent fade */
+    );
+
+    /* Soft edge only */
+    filter: blur(1px);
+	z-index: -1;
+}
+
+
+/* ============================================================================================
+   JOIN SECTION
+============================================================================================ */
+
+.join-section {
+    text-align: center;
+    padding: 140px 20px;
+}
+.join-bottom {
+    margin-top: 32px;   /* adjust to whatever you want */
+  
+}
+
+
+
+/* ============================================================================================
+   FOOTER
+============================================================================================ */
+
+.footer {
+    text-align: center;
+    padding: 40px 0;
+    opacity: 0.8;
+}
+
+
+/* ============================================================================================
+   FADE-IN SCROLL ANIMATION
+============================================================================================ */
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ============================================================================================
+   RESPONSIVE DESIGN
+============================================================================================ */
+
+@media (max-width: 900px) {
+    .offer-grid {
+        grid-template-columns: 1fr;
+    }
+    .steps {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 800px) {
+    .desktop-nav {
+        display: none;
+    }
+    .hamburger {
+        display: flex;
+		color: white;
+    }
+    .steps {
+        grid-template-columns: 1fr;
+    }
+}
