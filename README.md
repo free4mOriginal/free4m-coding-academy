@@ -42,7 +42,7 @@ Other contributors will review the code to ensure its quality. If no issues are 
 - **Approve**: This option accepts the pull request.
 - **Request for Change**: This option is a rejection and blocks the ability to merge until this option is resolved.
 
-If a request for change has been made, a review must be requested from the reviewer who rejected the pull request, once the necessary changes have been made.
+If a request for change has been made, a review must be requested from the reviewer who rejected the pull request, once the necessary changes have been made. The feature branch can then be deleted, from both the remote and local repositories.
 
 <span style="color:red">**DO NOT MERGE YOUR OWN CODE**</span>
 
