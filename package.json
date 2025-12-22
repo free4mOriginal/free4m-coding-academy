@@ -1,0 +1,24 @@
+{
+  "name": "free4m-academy",
+  "version": "1.0.0",
+  "description": "An issue must first be created. Create an issue by navigating to the \"Issues\" tab and clicking the \"New Issue\" button. Provide a name and description. Then, select a project and type by selecting the gear icons by their respective terms on the sidebar. The project will be **free4m-academy**. The three possible types are as follows: - **Bug**: A request to fix errors or unexpected behavior - **Feature**: A request for new functionality - **Task**: A request for a specific change that is neither a bug fix nor a new feature",
+  "homepage": "https://github.com/free4m-academy/free4m-academy#readme",
+  "bugs": {
+    "url": "https://github.com/free4m-academy/free4m-academy/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/free4m-academy/free4m-academy.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "vite": "^7.3.0"
+  }
+}
